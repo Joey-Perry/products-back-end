@@ -2,12 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const app = express();
+const cors = require('cors');
 
 const { CONNECTION_STRING, SERVER_PORT } = process.env;
 const { create, getOne, getAll, update, deleteProduct } = require('./products_controller');
 
 app.use(express.json());
 app.use(express.static('client/build'));
+app.use(cors());
 
 massive({
     connectionString: CONNECTION_STRING,

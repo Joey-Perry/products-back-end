@@ -3,7 +3,6 @@ const db = (req) => req.app.get('db');
 const create = (req, res) => {
 
     const { name, description, price, image_url } = req.body;
-
     db(req).create_product([name, description, price, image_url])
         .then(res.sendStatus(200))
         .catch(err => {
